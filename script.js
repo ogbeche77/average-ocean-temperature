@@ -27,7 +27,11 @@ async function getData() { //named async bcos its an asynchronous function makin
 }
 
 
+
+
 // Presenting the result of the ocean mean temperature in a chart
+
+
 const xlabels =[];  //important its made a global variable
 const avgMonths = [];  //important its made a global variable
 const avgMonths1 =[];//important its made a global variable
@@ -39,17 +43,31 @@ async function chartIt(){
 const ctx = document.getElementById('chart').getContext('2d');
 // To present as chart we create a new variable and set to blank array
 const myChart = new Chart(ctx, {
-    type: 'radar',
+    type: 'line',
     data: {
         labels: xlabels,  //const newLabel is referenced here
         datasets: [{
-            label: 'Ocean Avg temperature (Northern Hemisphere)',
+            label: 'Ocean Avg temperature (Northern Hemisphere in C°)',
             data: avgMonths, avgMonths1,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-        }]
+            backgroundColor: 'rgba(235, 186, 52 0.2)',
+            borderColor: 'rgba(235, 186, 52)',
+            borderWidth: 1,
+            fill: false,
+           }]
+    
     },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    // This call backfunction can be used to edit the y-axis
+                    callback: function(value, index, values) {
+                        return value + "°C" ;
+                    }
+                }
+            }]
+        }
+    }
     });
 }
  
