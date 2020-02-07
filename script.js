@@ -39,14 +39,14 @@ async function chartIt(){
 const ctx = document.getElementById('chart').getContext('2d');
 // To present as chart we create a new variable and set to blank array
 const myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'radar',
     data: {
         labels: xlabels,  //const newLabel is referenced here
         datasets: [{
             label: 'Ocean Avg temperature (Northern Hemisphere)',
             data: avgMonths, avgMonths1,
-            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-            borderColor: ['rgba(255, 99, 132, 1)'],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1
         }]
     },
