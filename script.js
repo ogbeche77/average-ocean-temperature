@@ -20,9 +20,8 @@ async function getData() { //named async bcos its an asynchronous function makin
         xlabels.push(year); //chart ref can be added here
         const tempA =columns[1];
          avgMonths.push(tempA); //chart ref can be added here
-         const tempN =columns[2];
-         avgMonths1.push(tempA); //chart ref can be added here
-        console.log(year,tempA, tempN);
+        
+        console.log(year,tempA)
     });
 }
 
@@ -31,31 +30,31 @@ async function getData() { //named async bcos its an asynchronous function makin
 
 // Presenting the result of the ocean mean temperature in a chart
 
-
+// To present as chart we create a new variable and set to blank array
 const xlabels =[];  //important its made a global variable
 const avgMonths = [];  //important its made a global variable
-const avgMonths1 =[];//important its made a global variable
+              
 
 chartIt();  //calling function (position matter)
 
 async function chartIt(){
     await getData();  //after chartIt is called, it waits for getData() before executing
 const ctx = document.getElementById('chart').getContext('2d');
-// To present as chart we create a new variable and set to blank array
+
+
+
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: xlabels,  //const newLabel is referenced here
         datasets: [{
-            label: 'Ocean Avg temperature (Northern Hemisphere in C°)',
-            data: avgMonths, avgMonths1,
+            label: 'Ocean Avg temperature (Global in C°)',
+            data: avgMonths,
             backgroundColor: 'rgba(235, 186, 52 0.2)',
             borderColor: 'rgba(235, 186, 52)',
             borderWidth: 1,
             fill: false,
-           }]
-    
-    },
+           }],    },
     options: {
         scales: {
             yAxes: [{
@@ -65,8 +64,11 @@ const myChart = new Chart(ctx, {
                         return value + "°C" ;
                     }
                 }
+
+
             }]
-        }
+     }
+     
     }
     });
 }
